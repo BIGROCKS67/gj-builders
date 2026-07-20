@@ -42,6 +42,8 @@ const PHONE = '07956158041'
 const PHONE_DISPLAY = '07956 158041'
 const EMAIL = 'gjbuilders15@gmail.com'
 const INSTAGRAM = 'https://www.instagram.com/g.j_builders'
+const GOOGLE_LISTING = 'https://g.page/r/CfvwrXrQLyJ3EAE'
+const GOOGLE_REVIEW = 'https://g.page/r/CfvwrXrQLyJ3EAE/review'
 const AREAS = 'Northamptonshire, Milton Keynes and surrounding areas'
 const HOURS = 'Mon to Fri, 8:00am to 6:00pm. Saturday by appointment.'
 
@@ -121,19 +123,24 @@ const GALLERY = [
   { src: 'images/patio-garden-room.png', alt: 'Slate patio with railway sleeper planters and garden room', cat: 'Patios', tag: 'Patio and landscaping' },
 ]
 
-const REVIEWS = [
-  { name: 'Sarah Mitchell', text: 'GJ Builders completed our extension on time and to an excellent standard. Communication was clear throughout and the team were respectful of our home.', when: '3 months ago' },
-  { name: 'David Thompson', text: 'Professional from start to finish. The quote was detailed and honest, and the finished brickwork looks fantastic. Would highly recommend.', when: '5 months ago' },
-  { name: 'Emma Collins', text: 'We had our kitchen and living area renovated and couldn\u2019t be happier. Quality workmanship, tidy site, and a fair price. Will use again.', when: '2 months ago' },
-  { name: 'James Wright', text: 'Reliable, skilled, and easy to deal with. Our patio has completely changed how we use the garden. Brilliant job.', when: '4 months ago' },
-  { name: 'Helen Parker', text: 'From the initial survey to the final handover, everything was handled professionally. GJ Builders exceeded our expectations.', when: '6 months ago' },
-]
-
 const FEATURED_REVIEW = {
-  text: 'Honest pricing, no surprises, and great results. The team kept us updated at every stage. Exactly what you want from a local builder.',
-  name: 'Mark Stevens',
-  when: '1 month ago',
+  name: 'Tyler Pargiter',
+  when: '2 days ago',
+  text: 'George and team were brilliant start to finish completing our layout remodelling of the downstairs - which included blocking in an outdoor kitchen, relocating the downstairs bathroom and creating a utility room. He kept us informed throughout the whole process and where necessary advised plan changes to ensure the end result was in keeping with our vision. All work was completed to a fantastic standard and we would absolutely recommend!',
 }
+
+const REVIEWS = [
+  {
+    name: 'Adam Bishop',
+    when: 'a day ago',
+    text: 'I recently had my Gardern refurbished by GJ Builders. The service, attitude and politeness from George\u2019s team was second to none. On top off all of this, he quoted our works at a very competitive price which was the icing on the cake. Could not recommend enough and will 100% be using them again!',
+  },
+  {
+    name: 'Marc Leggett',
+    when: '3 days ago',
+    text: 'George recently did a patio extension for us. Couldn\u2019t ask more of him - quality workmanship, punctual, polite and hardworking. He\u2019s booked in to come back and build us a porch now. 100% would recommend.',
+  },
+]
 
 const WORK_TYPES = ['House extension', 'Renovation', 'Bricklaying', 'Patio', 'General construction', 'Other / not sure yet']
 const CONTACT_METHODS = ['Phone', 'Email', 'Either']
@@ -464,24 +471,31 @@ function App() {
           <Reveal className="section-header">
             <p className="section-label section-label-light">Google Reviews</p>
             <h2 className="section-title section-title-light">What our customers say</h2>
-            <a href="https://www.google.com/search?q=GJ+Builders+reviews" target="_blank" rel="noopener noreferrer" className="reviews-badge">
-              <span className="reviews-stars">★★★★★</span>
-              <strong>5.0</strong>
-              <span>on Google</span>
-              <span className="reviews-cta">Read more reviews on Google</span>
-            </a>
+            <div className="reviews-actions">
+              <a href={GOOGLE_LISTING} target="_blank" rel="noopener noreferrer" className="reviews-badge">
+                <span className="reviews-stars">★★★★★</span>
+                <strong>5.0</strong>
+                <span>from 3 Google reviews</span>
+              </a>
+              <a href={GOOGLE_REVIEW} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light reviews-leave">
+                Leave a Google Review
+              </a>
+            </div>
           </Reveal>
 
           <div className="reviews-featured">
             <Reveal>
               <blockquote className="review-hero">
+                <div className="review-stars">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={16} fill="currentColor" />)}
+                </div>
                 <p>&ldquo;{FEATURED_REVIEW.text}&rdquo;</p>
                 <footer>{FEATURED_REVIEW.name} · Google · {FEATURED_REVIEW.when}</footer>
               </blockquote>
             </Reveal>
           </div>
 
-          <div className="reviews-grid">
+          <div className="reviews-grid reviews-grid-two">
             {REVIEWS.map((r, i) => (
               <Reveal key={r.name} delay={i * 0.06}>
                 <article className="review-card">
