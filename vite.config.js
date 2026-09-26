@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Relative base so the build works on both the GitHub Pages
-// project URL (/gj-builders/) and the custom domain root.
+// Custom domain (gjbuilders.co.uk) is the primary host.
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [react()],
 })
